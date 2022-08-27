@@ -1,34 +1,24 @@
+from api.serializers import (CategorySerializer, CommentSerializer,
+                             ConformationCodeSerializer, GenreSerializer,
+                             ReadOnlyTitleSerializer, ReviewSerializer,
+                             TitleSerializer, UserSerializer)
+from django.conf import settings
 from django.contrib.auth.tokens import default_token_generator
 from django.core.mail import send_mail
 from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import status
+from rest_framework import generics, status
 from rest_framework.decorators import action
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 from rest_framework_simplejwt.tokens import AccessToken
-from rest_framework import generics
-from django.conf import settings
+from reviews.models import Category, Genre, Review, Title, User
 
-from api.serializers import (
-    ConformationCodeSerializer,
-    UserSerializer,
-    ReviewSerializer,
-    CommentSerializer,
-    CategorySerializer,
-    GenreSerializer,
-    ReadOnlyTitleSerializer,
-    TitleSerializer
-)
-from reviews.models import User, Category, Genre, Title, Review
 from .filters import TitleFilter
-from .permissions import (
-    IsAdminOrReadOnly,
-    IsAdmin,
-    IsAuthorOrAdministratorOrReadOnly
-)
 from .mixins import BaseModelViewSet
+from .permissions import (IsAdmin, IsAdminOrReadOnly,
+                          IsAuthorOrAdministratorOrReadOnly)
 
 
 class APISignUp(generics.CreateAPIView):
