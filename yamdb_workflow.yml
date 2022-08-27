@@ -42,7 +42,8 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: alexblacknn/yamdb_final:0.0.1
+          tags: alexblacknn/web:0.0.1
+
   deploy:
     runs-on: ubuntu-latest
     needs: build_and_push_to_docker_hub
@@ -54,9 +55,9 @@ jobs:
         username: ${{ secrets.USER }}
         key: ${{ secrets.SSH_KEY }}
         script: |
-          sudo docker pull alexblacknn/yamdb_final:0.0.1
-          sudo docker stop $(sudo docker ps -a -q)
-          sudo docker run --rm -d -p 8000:8000 alexblacknn/yamdb_final:0.0.1
+          cd infra
+          sudo docker-compose down
+          sudo docker-compose up --build --force-recreate
 
   send_message:
     runs-on: ubuntu-latest
