@@ -45,7 +45,7 @@ jobs:
           push: true
           tags: alexblacknn/yamdb_final:0.0.1
 
- deploy:
+  deploy:
     runs-on: ubuntu-latest
     needs: build_and_push_to_docker_hub
     steps:
