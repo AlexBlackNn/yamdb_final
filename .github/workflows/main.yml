@@ -58,6 +58,9 @@ jobs:
         script: |
           sudo docker pull alexblacknn/yamdb_final:0.0.1
           sudo docker stop $(sudo docker ps -a -q)
+          echo 'ALEX BLACK'
+          echo $(sudo docker images)
+          echo 'ALEX BLACK'
           sudo docker run --rm -d -p 8000:8000 alexblacknn/yamdb_final:0.0.1
 
   send_message:
