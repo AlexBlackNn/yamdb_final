@@ -43,7 +43,7 @@ jobs:
         with:
           context: ./api_yamdb
           push: true
-          tags: alexblacknn/yamdb_final:0.0.1
+          tags: alexblacknn/web:0.0.1
 
   deploy:
     runs-on: ubuntu-latest
