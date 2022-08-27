@@ -56,12 +56,9 @@ jobs:
         username: ${{ secrets.USER }}
         key: ${{ secrets.SSH_KEY }}
         script: |
-          sudo docker pull alexblacknn/yamdb_final:0.0.1
-          sudo docker stop $(sudo docker ps -a -q)
-          echo 'ALEX BLACK'
-          echo $(sudo docker images)
-          echo 'ALEX BLACK'
-          sudo docker run --rm -d -p 8000:8000 alexblacknn/yamdb_final:0.0.1
+          cd infra
+          sudo docker-compose down
+          sudo docker-compose up --build --force-recreate
 
   send_message:
     runs-on: ubuntu-latest
