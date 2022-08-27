@@ -1,4 +1,4 @@
-# yamdb_final (ссылка на развернутый проект http://51.250.70.3/admin)
+# yamdb_final (http://51.250.70.3/admin)
 
 ![ci/cd workflow](https://github.com/alexblacknn/yamdb_final/actions/workflows/main.yml/badge.svg)
 
