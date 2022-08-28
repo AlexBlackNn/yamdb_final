@@ -30,7 +30,6 @@ Django-rest-framework
 cd api_yamdb
 ```
 
-
 Запустить проект:
 
 ```
